@@ -1,7 +1,7 @@
 package me.fsanllehi;
 
-public class Util {
-    public static void setup(){
+class Util {
+    static void setup(){
         //Popular lista departamentos
         System.out.println("Populando lista departamentos...");
         Listas.setDepartamentos(new Departameto(1, "Lenguaje"));
@@ -38,7 +38,48 @@ public class Util {
         Listas.setServicios(new Servicio("Maria","Luisa", 13033032,false,1920,3,4,2013));
 
     }
-    public static int CalcEdad(int YOB){
-        return (int) 2019-YOB;
+    private static int CalcEdad(int YOB){
+        return 2019-YOB;
+    }
+    static void listarProfesores(){
+        for (Profesor profesor: Listas.getProfesores()) {
+            System.out.println("===========================");
+            System.out.println("Nombre: "+profesor.getNombre());
+            System.out.println("Apellido: "+profesor.getApellido());
+            System.out.println("RUT: "+profesor.getRUT());
+            System.out.println("¿Casado?: "+profesor.isCasado());
+            System.out.println("Año nacimiento: "+profesor.getYOB());
+            System.out.println("Edad: "+Util.CalcEdad(profesor.getYOB()));
+            System.out.println("Departamento: "+ Listas.getDepartamentos().get(profesor.getIDD()-1).getNombre());
+            System.out.println("Piso: "+profesor.getFloor());
+            System.out.println("Tipo: "+Listas.getContratos().get(profesor.getIDT()-1).getDesc());
+            System.out.println("Año contrato: "+profesor.getYOI());
+        }
+    }
+    static void listarEstudiantes(){
+        for (Estudiante estudiante: Listas.getEstudiantes()) {
+            System.out.println("===========================");
+            System.out.println("Nombre: " + estudiante.getNombre());
+            System.out.println("Apellido: " + estudiante.getApellido());
+            System.out.println("RUT: " + estudiante.getRUT());
+            System.out.println("¿Casado?: " + estudiante.isCasado());
+            System.out.println("Año nacimiento: " + estudiante.getYOB());
+            System.out.println("Edad: " + Util.CalcEdad(estudiante.getYOB()));
+            System.out.println("Curso: " + Listas.getDepartamentos().get(estudiante.getIDD() - 1).getNombre());
+        }
+    }
+    static void listarServicios(){
+        for (Servicio servicios: Listas.getServicios()) {
+            System.out.println("===========================");
+            System.out.println("Nombre: " + servicios.getNombre());
+            System.out.println("Apellido: " + servicios.getApellido());
+            System.out.println("RUT: " + servicios.getRUT());
+            System.out.println("¿Casado?: " + servicios.isCasado());
+            System.out.println("Año nacimiento: " + servicios.getYOB());
+            System.out.println("Edad: " + Util.CalcEdad(servicios.getYOB()));
+            System.out.println("Piso: " + servicios.getFloor());
+            System.out.println("Seccion: " + Listas.getSecciones().get(servicios.getIDS() - 1).getDesc());
+            System.out.println("Año contrato: " + servicios.getYOI());
+        }
     }
 }
